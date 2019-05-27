@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="d-flex justify-content-center">
+    <div class="searchbar">
+      <input #searchBox class="search_input" (input)="search(searchBox.value)" placeholder="Search your area for running paths">
+      <a (click)="search(searchBox.value)" class="search_icon"><i class="fas fa-search"></i></a>
+    </div>
+  </div>
+  <div class="d-flex justify-content-center">
+    <div class="searchbar">
+      <input #searchBox class="search_filter" (input)="search(searchBox.value)" placeholder="Cluster">
+    </div>
+    <div class="searchbar">
+      <input #searchBox class="search_filter" (input)="search(searchBox.value)" placeholder="Paths">
+    </div>
+  </div>
+ <app-map></app-map>
+</div>

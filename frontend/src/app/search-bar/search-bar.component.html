@@ -1,0 +1,8 @@
+<div class="container">
+  <div class="d-flex justify-content-center">
+    <div class="searchbar">
+      <input #searchBox class="search_input" (input)="search(searchBox.value)" placeholder="Search your area for running paths">
+      <a routerLink="/filter" (click)="search(searchBox.value)" class="search_icon"><i class="fas fa-search"></i></a>
+    </div>
+  </div>
+</div>
