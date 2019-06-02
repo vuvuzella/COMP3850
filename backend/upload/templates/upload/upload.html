@@ -1,0 +1,106 @@
+<!-- view for upload -->
+{% load static %}
+<!doctype html>
+<html lang="EN">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Upload Run Data</title>
+    <script src="{% static 'upload.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js'%}"></script>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css'%}">
+  </head>
+
+  <body>
+    <div class="container">
+
+      <div class="row">
+        <h2>Upload Running Data</h2>
+      </div>
+
+      <div class="row">
+        <h4>Permissible data can be from the following run tracker apps:</h2>
+      </div>
+      <div class="row">
+        <ul>
+          <li>Runtastic</li>
+          <li>Strava</li>
+        </ul>
+      </div>
+
+      <div class=" row alert alert-warning" role="alert">
+        <h4>Note: your files are never stored on our servers</h4>
+      </div>
+      
+      <div class="row">
+        <form action="{% url 'upload:upload' %}"
+              method="POST"
+              id="upload-form"
+              enctype="multipart/form-data">
+        
+          {% csrf_token %}
+
+          <div class="row">
+            <div class="form-group">
+              <label for="data_select">Select Data type</label>
+              <select class="form-control" id="data_select" name="data_type">
+                <option value="runtastic">Runtastic</option>
+                <option value="strava">Strava</option>
+              </select>
+            </div>
+          </div>
+        
+          <div class="row">
+            <div class="form-group" id="strava-upload">
+              <h3>Upload Strava activities.csv and .fit/.fit.gz/.gpx/ files</h3>
+              <label for="file-run-activities">Select a activities.csv:</label>
+              <input class="form-control-file"
+                     type="file"
+                     id="file-run-activities"
+                     multiple="false"
+                     name="strava-activities"
+                     accept=".csv">
+              <label for="file-run-points">Select a Run data:</label>
+              <input class="form-control-file"
+                     type="file"
+                     id="file-run-points"
+                     name="strava-points"
+                     multiple="true" accept=".fit,.fit.gz,.gpx">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="form-group" id="runtastic-upload">
+              <h3>Upload Runtastic Sport-session and GPS-data json files</h3>
+              <label for="file-run-activities">Select a file to upload:</label>
+              <input class="form-control-file"
+                     type="file"
+                     id="file-run-activities"
+                     multiple="true"
+                     name="runtastic-activities"
+                     accept=".json">
+              <label for="file-run-points">Select a Run data:</label>
+              <input class="form-control-file"
+                     type="file"
+                     id="file-run-points"
+                     multiple="true"
+                     name="runtastic-points"
+                     accept=".json">
+            </div>
+          </div>
+        
+        </form>
+      </div>
+      
+      <div class="row">
+        <button class="btn btn-primary" 
+                id="submit-run"
+                type="submit"
+                form="upload-form">Upload</button>
+      </div>
+
+    </div>
+
+  </body>
+
+</html>

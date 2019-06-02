@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx creator="StravaGPX Android" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd" version="1.1" xmlns="http://www.topografix.com/GPX/1/1">
+ <metadata>
+  <time>2018-06-30T20:48:02Z</time>
+ </metadata>
+ <trk>
+  <name>Morning Run</name>
+  <type>9</type>
+  <trkseg>
+   <trkpt lat="14.5395190" lon="120.9799240">
+    <ele>3.7</ele>
+    <time>2018-06-30T20:48:02Z</time>
+   </trkpt>
+   <trkpt lat="14.5408010" lon="120.9795520">
+    <ele>3.8</ele>
+    <time>2018-06-30T20:48:05Z</time>
+   </trkpt>
+   <trkpt lat="14.5407270" lon="120.9794760">
+    <ele>3.9</ele>
+    <time>2018-06-30T21:54:09Z</time>
+   </trkpt>
+  </trkseg>
+ </trk>
+</gpx>

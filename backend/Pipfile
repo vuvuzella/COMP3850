@@ -1,0 +1,27 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+
+[packages]
+django = "*"
+djangorestframework = "*"
+coreapi = "*"
+pyyaml = "*"
+osmpythontools = "*"
+celery = "*"
+geographiclib = "*"
+gunicorn = "*"
+django-heroku = "*"
+fitparse = "*"
+requests = "*"
+psycopg2 = "*"
+dj-database-url = "*"
+django-configurations = "*"
+whitenoise = "*"
+django-celery-results = "*"
+
+[requires]
+python_version = "3.5"

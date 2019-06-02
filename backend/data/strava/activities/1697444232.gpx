@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx creator="StravaGPX Android" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd" version="1.1" xmlns="http://www.topografix.com/GPX/1/1">
+ <metadata>
+  <time>2018-07-12T11:50:23Z</time>
+ </metadata>
+ <trk>
+  <name>Evening Run</name>
+  <type>9</type>
+  <trkseg>
+   <trkpt lat="14.5821090" lon="121.0639190">
+    <ele>62.0</ele>
+    <time>2018-07-12T11:50:23Z</time>
+   </trkpt>
+   <trkpt lat="14.5821890" lon="121.0638790">
+    <ele>62.0</ele>
+    <time>2018-07-12T11:50:25Z</time>
+   </trkpt>
+  </trkseg>
+ </trk>
+</gpx>

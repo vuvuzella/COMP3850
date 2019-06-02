@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx creator="StravaGPX Android" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd" version="1.1" xmlns="http://www.topografix.com/GPX/1/1">
+ <metadata>
+  <time>2018-05-18T21:49:16Z</time>
+ </metadata>
+ <trk>
+  <name>Morning Run</name>
+  <type>9</type>
+  <trkseg>
+   <trkpt lat="14.5584300" lon="120.9832340">
+    <ele>4.1</ele>
+    <time>2018-05-18T21:49:16Z</time>
+   </trkpt>
+   <trkpt lat="14.5584150" lon="120.9831630">
+    <ele>4.3</ele>
+    <time>2018-05-18T21:49:17Z</time>
+   </trkpt>
+   <trkpt lat="14.5580660" lon="120.9829150">
+    <ele>6.0</ele>
+    <time>2018-05-18T21:49:49Z</time>
+   </trkpt>
+   <trkpt lat="14.5578570" lon="120.9824020">
+    <ele>3.6</ele>
+    <time>2018-05-18T21:50:12Z</time>
+   </trkpt>
+   <trkpt lat="14.5578150" lon="120.9823630">
+    <ele>3.4</ele>
+    <time>2018-05-18T21:50:13Z</time>
+   </trkpt>
+   <trkpt lat="14.5577910" lon="120.9823170">
+    <ele>3.7</ele>
+    <time>2018-05-18T21:50:18Z</time>
+   </trkpt>
+   <trkpt lat="14.5578050" lon="120.9823310">
+    <ele>3.7</ele>
+    <time>2018-05-18T21:50:21Z</time>
+   </trkpt>
+   <trkpt lat="14.5578190" lon="120.9823440">
+    <ele>3.7</ele>
+    <time>2018-05-18T21:50:28Z</time>
+   </trkpt>
+   <trkpt lat="14.5578330" lon="120.9823580">
+    <ele>3.7</ele>
+    <time>2018-05-18T21:50:31Z</time>
+   </trkpt>
+   <trkpt lat="14.5578470" lon="120.9823710">
+    <ele>3.7</ele>
+    <time>2018-05-18T21:52:23Z</time>
+   </trkpt>
+   <trkpt lat="14.5578610" lon="120.9823850">
+    <ele>3.7</ele>
+    <time>2018-05-18T21:52:24Z</time>
+   </trkpt>
+   <trkpt lat="14.5578510" lon="120.9825000">
+    <ele>3.6</ele>
+    <time>2018-05-18T21:52:25Z</time>
+   </trkpt>
+   <trkpt lat="14.5581800" lon="120.9826090">
+    <ele>5.8</ele>
+    <time>2018-05-18T21:52:28Z</time>
+   </trkpt>
+   <trkpt lat="14.5580280" lon="120.9825710">
+    <ele>4.8</ele>
+    <time>2018-05-18T21:52:29Z</time>
+   </trkpt>
+   <trkpt lat="14.5579040" lon="120.9824070">
+    <ele>3.9</ele>
+    <time>2018-05-18T21:52:30Z</time>
+   </trkpt>
+   <trkpt lat="14.5579040" lon="120.9825600">
+    <ele>3.9</ele>
+    <time>2018-05-18T21:54:35Z</time>
+   </trkpt>
+   <trkpt lat="14.5578980" lon="120.9825790">
+    <ele>4.1</ele>
+    <time>2018-05-18T21:54:36Z</time>
+   </trkpt>
+   <trkpt lat="14.5581130" lon="120.9825220">
+    <ele>5.1</ele>
+    <time>2018-05-18T21:54:38Z</time>
+   </trkpt>
+   <trkpt lat="14.5579940" lon="120.9826200">
+    <ele>4.8</ele>
+    <time>2018-05-18T21:56:02Z</time>
+   </trkpt>
+   <trkpt lat="14.5579840" lon="120.9827270">
+    <ele>5.3</ele>
+    <time>2018-05-18T21:56:06Z</time>
+   </trkpt>
+   <trkpt lat="14.5580030" lon="120.9827770">
+    <ele>5.8</ele>
+    <time>2018-05-18T21:56:07Z</time>
+   </trkpt>
+   <trkpt lat="14.5579970" lon="120.9828060">
+    <ele>5.6</ele>
+    <time>2018-05-18T21:56:08Z</time>
+   </trkpt>
+   <trkpt lat="14.5580170" lon="120.9828550">
+    <ele>5.9</ele>
+    <time>2018-05-18T21:56:09Z</time>
+   </trkpt>
+   <trkpt lat="14.5580370" lon="120.9829010">
+    <ele>6.0</ele>
+    <time>2018-05-18T21:56:10Z</time>
+   </trkpt>
+   <trkpt lat="14.5580530" lon="120.9829430">
+    <ele>6.0</ele>
+    <time>2018-05-18T21:56:11Z</time>
+   </trkpt>
+   <trkpt lat="14.5579790" lon="120.9830010">
+    <ele>6.0</ele>
+    <time>2018-05-18T21:56:12Z</time>
+   </trkpt>
+   <trkpt lat="14.5579080" lon="120.9829920">
+    <ele>6.0</ele>
+    <time>2018-05-18T21:56:13Z</time>
+   </trkpt>
+   <trkpt lat="14.5579260" lon="120.9830340">
+    <ele>6.0</ele>
+    <time>2018-05-18T21:56:18Z</time>
+   </trkpt>
+   <trkpt lat="14.5579440" lon="120.9830740">
+    <ele>6.0</ele>
+    <time>2018-05-18T21:56:19Z</time>
+   </trkpt>
+   <trkpt lat="14.5579580" lon="120.9831060">
+    <ele>5.9</ele>
+    <time>2018-05-18T21:56:20Z</time>
+   </trkpt>
+   <trkpt lat="14.5579790" lon="120.9831450">
+    <ele>5.8</ele>
+    <time>2018-05-18T21:56:22Z</time>
+   </trkpt>
+   <trkpt lat="14.5579890" lon="120.9831740">
+    <ele>5.8</ele>
+    <time>2018-05-18T21:56:24Z</time>
+   </trkpt>
+   <trkpt lat="14.5580010" lon="120.9832010">
+    <ele>5.6</ele>
+    <time>2018-05-18T21:56:26Z</time>
+   </trkpt>
+   <trkpt lat="14.5583000" lon="120.9838670">
+    <ele>4.9</ele>
+    <time>2018-05-18T21:57:15Z</time>
+   </trkpt>
+   <trkpt lat="14.5583020" lon="120.9838280">
+    <ele>4.8</ele>
+    <time>2018-05-18T21:57:17Z</time>
+   </trkpt>
+   <trkpt lat="14.5582900" lon="120.9837620">
+    <ele>4.6</ele>
+    <time>2018-05-18T21:57:19Z</time>
+   </trkpt>
+   <trkpt lat="14.5582790" lon="120.9836960">
+    <ele>4.6</ele>
+    <time>2018-05-18T21:57:21Z</time>
+   </trkpt>
+   <trkpt lat="14.5582670" lon="120.9836300">
+    <ele>4.2</ele>
+    <time>2018-05-18T21:57:23Z</time>
+   </trkpt>
+   <trkpt lat="14.5582560" lon="120.9835640">
+    <ele>4.0</ele>
+    <time>2018-05-18T21:57:25Z</time>
+   </trkpt>
+   <trkpt lat="14.5582440" lon="120.9834990">
+    <ele>4.1</ele>
+    <time>2018-05-18T21:57:27Z</time>
+   </trkpt>
+   <trkpt lat="14.5582330" lon="120.9834330">
+    <ele>4.1</ele>
+    <time>2018-05-18T21:57:29Z</time>
+   </trkpt>
+   <trkpt lat="14.5582210" lon="120.9833670">
+    <ele>4.1</ele>
+    <time>2018-05-18T21:57:31Z</time>
+   </trkpt>
+   <trkpt lat="14.5582100" lon="120.9833010">
+    <ele>4.1</ele>
+    <time>2018-05-18T22:07:18Z</time>
+   </trkpt>
+   <trkpt lat="14.5581980" lon="120.9832350">
+    <ele>4.5</ele>
+    <time>2018-05-18T22:07:19Z</time>
+   </trkpt>
+   <trkpt lat="14.5582080" lon="120.9832760">
+    <ele>4.1</ele>
+    <time>2018-05-18T22:07:20Z</time>
+   </trkpt>
+   <trkpt lat="14.5582350" lon="120.9833210">
+    <ele>4.1</ele>
+    <time>2018-05-18T22:07:22Z</time>
+   </trkpt>
+   <trkpt lat="14.5583290" lon="120.9834250">
+    <ele>4.0</ele>
+    <time>2018-05-18T22:07:41Z</time>
+   </trkpt>
+   <trkpt lat="14.5583420" lon="120.9834500">
+    <ele>4.0</ele>
+    <time>2018-05-18T22:07:44Z</time>
+   </trkpt>
+   <trkpt lat="14.5583360" lon="120.9834850">
+    <ele>4.0</ele>
+    <time>2018-05-18T22:07:46Z</time>
+   </trkpt>
+  </trkseg>
+ </trk>
+</gpx>

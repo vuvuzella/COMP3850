@@ -1,0 +1,2 @@
+web: gunicorn runner_recommender_app.wsgi
+worker: celery -A runner_recommender_app worker -l info
