@@ -1,12 +1,47 @@
-<!doctype html>
-<html>
-  <head>
-  </head>
-  <body>
-    <ul>
+{% extends "upload/base.html" %}
+{% load static %}
+
+{% block head %}
+<script src="{% static 'in_progress.js' %}"></script>
+{% endblock %}
+
+{% block body %}
+<!-- 
+<ul>
+    {% for task in job_tasks %}
+    <li> {{ task.id }} </li>
+    {% endfor %}
+</ul>
+
+    <p id="progress">0</p>
+-->
+<div class="container">
+  <div class="row">
+    <h3>Please do not close this window. You will be redirected accordingly</h3>
+  </div>
+  <div class="row">
+    <h4>Progress:</h4>
+  </div>
+
+  <div class="progress">
+    <div id="progress"
+         class="progress-bar progress-bar-striped progress-bar-animated"
+         role="progressbar"
+         aria-valuenow="0"
+         aria-valuemin="0"
+         aria-valuemax="100">
+  </div>
+</div>
+
+<script>
+    var job_ids = [
         {% for task in job_tasks %}
-        <li> {{ task.id }} </li>
+        '{{task.id}}',
         {% endfor %}
-    </ul>
-  </body>
-</html>
+    ];
+    var poll = '{{ poll }}' || false;
+    if (poll === 'True')
+        poll = true;
+    var endpoint = '{{ endpoint }}';
+</script>
+{% endblock %}

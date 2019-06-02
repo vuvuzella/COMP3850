@@ -1,15 +1,15 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.template import loader
 from django.core.files.uploadedfile import TemporaryUploadedFile
 
-from commons.algorithms import getCentroid
+from commons.algorithms import getCentroid, getSemiToLatlon
 from fitparse import FitFile
 from requests.auth import HTTPBasicAuth
+from celery.result import AsyncResult
 
 import zlib
 import json
 import xml.etree.ElementTree as ET
-import requests as rq
 import math
 import os
 
@@ -18,16 +18,20 @@ from .tasks import upload_run_data
 def upload(request):
 
     if (request.method == 'GET'):
+        if 'result' in request.GET.keys():
+            result = request.GET['result']
+        else:
+            result = None
+
         template = loader.get_template('upload/upload.html')
-        return HttpResponse(template.render({}, request))
+        return HttpResponse(template.render({
+            'result': result
+            }, request))
 
     elif (request.method == 'POST'):
         # handle post requests
-        # TODO: Error Handling
         # read the file
-
         # create server endpoint 
-
         root_host = os.environ.get('APP_DOMAIN')
         request_port = request.META['SERVER_PORT']
         if root_host is None:
@@ -67,16 +71,23 @@ def upload(request):
             activities = activities.split('\\n')[1:-1]
             upload_data = _processStravaData(activities, points)
 
-        # promise = upload_run_data.delay(endpoints, upload_data, user, passwd)
-        # print('total runs: ', len(upload_data))
-        task_ids = [upload_run_data.delay(endpoints, datum, user, passwd)
-                for datum in upload_data]
-        print(task_ids)
-
-        # load in progress
-        template = loader.get_template('upload/in_progress.html')
-        return HttpResponse(template.render({
-            'job_tasks': task_ids }, request))
+        if len(upload_data) == 0:
+            return HttpResponse(loader
+                    .get_template('upload/upload.html')
+                    .render({
+                        'result': 'failed'
+                        }, request))
+        else:
+            print('data to send: ', len(upload_data))
+            task_ids = [upload_run_data.delay(endpoints, datum, user, passwd)
+                    for datum in upload_data]
+            # load in progress
+            template = loader.get_template('upload/in_progress.html')
+            return HttpResponse(template.render({
+                'job_tasks': task_ids,
+                'poll': True,
+                'endpoint': root_host + '/upload/in_progress/'
+                }, request))
 
     else:
         return HttpResponse('Method %s not allowed' % (request.method,))
@@ -116,7 +127,7 @@ def _getPointsFromGpx(gpxFile):
         })
     return latlon
 
-def _getPointsFromFit(fitFile, run_id):
+def _getPointsFromFit(fitFile):
     """
     Returns a list of lat lon dicts in degrees
     """
@@ -124,12 +135,13 @@ def _getPointsFromFit(fitFile, run_id):
     messages = list(fitFile.get_messages(name='record'))
     for message in messages:
         columns = message.get_values()
-        lat = columns['position_lat']
-        lon = columns['position_lon']
-        latlon.append({
-            'latitude': lat,
-            'longitude': lon
-        })
+        if ('position_lat' in columns.keys()) and ('position_long' in columns.keys()):
+            lat, lon = getSemiToLatlon(columns['position_lat'],
+                    columns['position_long'])
+            latlon.append({
+                'latitude': lat,
+                'longitude': lon
+            })
     return latlon
 
 def _processRuntasticData(activities, points):
@@ -182,14 +194,6 @@ def _processRuntasticData(activities, points):
                     'elevation_loss': elevation_loss
                 }
 
-                # TODO: Refactor the POSTING of data, do it in a
-                # single place
-                # POST to runner_app api
-                # res = rq.post(runpaths_uri,
-                #         data=run_path_payload,
-                #         auth=(user, passwd))
-                # run_id = res.json()['id']
-
                 # create the run_poins_payload
                 # POST to runner_app api
                 run_points_payload = []
@@ -203,10 +207,8 @@ def _processRuntasticData(activities, points):
                         'altitude': int(gps_data['altitude']),
                         'distance': int(gps_data['distance'])
                     })
-                # res = rq.post(points_uri,
-                #         json=run_points_payload,
-                #         auth=(user, passwd)) # TODO: make this parametarized?
-                upload_data.append((run_path_payload, run_points_payload))
+
+                upload_data.append((run_path_payload, run_points_payload,))
                 break
             else:
                 # continue searching 
@@ -236,8 +238,10 @@ def _processStravaData(activities, points):
                     duration = float(activity_split[5])
                     distance = math.ceil(float(activity_split[6]))
                     latlong = _getLatLong(point_data.read(), extension)
-                    centroid = getCentroid(latlong, extension=='fit'
-                            or extension=='gz')
+                    if len(latlong) == 0:
+                        print('skipping ', point_data.name, 'no latlong retrieved')
+                        break;
+                    centroid = getCentroid(latlong)
 
                     # Create the run path payload
                     run_path_payload = {
@@ -248,23 +252,10 @@ def _processStravaData(activities, points):
                         'cluster': '',
                     }
 
-                    # TODO: Refactor the POSTING of data, do it in a
-                    # single place
-                    # POST the run path 
-                    # res = rq.post(runpaths_uri,
-                    #         data=run_path_payload,
-                    #         auth=(user, passwd))
-                    # run_id = res.json()['id']
-
                     # put the run path id on each lat lon poin
-                    for point in latlong:
-                        point['run_path'] = run_id
-
-                    # POST the run points
-                    # res = rq.post(points_uri,
-                    #         json=latlong,
-                    #         auth=(user, passwd))
-                    upload_data.append((run_path_payload, latlong))
+                    # for point in latlong:
+                    #     point['run_path'] = run_id
+                    upload_data.append((run_path_payload, latlong,))
                     break
                 else:
                     # Skip this activity because GPS points data could
@@ -276,5 +267,14 @@ def _processStravaData(activities, points):
     return upload_data
 
 def in_progress(request):
-    print('in progress')
-    return HttpResponse('In progress')
+    if request.method == 'GET':
+        if 'job_ids' in request.GET.keys():
+            job_ids = request.GET['job_ids'].split('&')[0]
+            job_ids = job_ids.split(',')
+            results = [ AsyncResult(job_id).state == 'SUCCESS' for job_id in job_ids ]
+            print('Job id: ', job_ids[0], 'status: ', AsyncResult(job_ids[0]).state)
+            return JsonResponse({'results': results}, safe=False)
+        else:
+            return HttpResponse('Method %s not allowed' % (request.method,))
+    else:
+        return HttpResponse('Method %s not allowed' % (request.method,))

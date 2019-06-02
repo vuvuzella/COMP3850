@@ -147,6 +147,13 @@ def getCentroid(run_points, semicircle=False):
     cen_lon = total_lon / len(run_points)
     return (cen_lat, cen_lon)
 
+def getSemiToLatlon(semi_lat, semi_lon):
+    lat = semi_lat * (180 / (2**31))
+    lon = semi_lon * (180 / (2**31))
+
+    return (lat, lon)
+
+
 # if __name__ == '__main__':
 #     runtastic_dir = '../data/runtastic/Sport-sessions'
 #     # run_filename = 'fffc980a-f785-4e8a-9aa7-55396ad841ba.json'
