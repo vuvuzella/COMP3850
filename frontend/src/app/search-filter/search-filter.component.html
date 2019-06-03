@@ -1,17 +1,38 @@
 <div class="container">
   <div class="d-flex justify-content-center">
-    <div class="searchbar">
-      <input #searchBox class="search_input" (input)="search(searchBox.value)" placeholder="Search your area for running paths">
-      <a (click)="search(searchBox.value)" class="search_icon"><i class="fas fa-search"></i></a>
-    </div>
+    <form class="search-form">
+      <mat-form-field class="search-full-width" appearance="fill">
+        <input type="text" placeholder="Search for running tracks in your area" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+            {{option}}
+          </mat-option>
+        </mat-autocomplete>
+        <i matSuffix class="fas fa-search"></i>
+      </mat-form-field>
+    </form>
   </div>
   <div class="d-flex justify-content-center">
-    <div class="searchbar">
-      <input #searchBox class="search_filter" (input)="search(searchBox.value)" placeholder="Cluster">
-    </div>
-    <div class="searchbar">
-      <input #searchBox class="search_filter" (input)="search(searchBox.value)" placeholder="Paths">
-    </div>
+    <form class="search-filter-left">
+      <mat-form-field class="search-full-width" appearance="fill">
+        <input type="text" placeholder="Cluster" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+            {{option}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </form>
+    <form class="search-filter-right">
+      <mat-form-field class="search-full-width" appearance="fill">
+        <input type="text" placeholder="Path" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+            {{option}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </form>
   </div>
  <app-map></app-map>
 </div>
