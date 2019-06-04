@@ -2,7 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
-import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatNativeDateModule } from '@angular/material';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
@@ -14,7 +13,6 @@ import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { SearchFilterComponent } from './search-filter/search-filter.component';
 import { AppRoutingModule } from './app-routing.module';
-import { InMemoryDataService }  from './in-memory-data.service';
 import { AutoSearchComponent } from './auto-search/auto-search.component';
 
 @NgModule({
@@ -34,9 +32,6 @@ import { AutoSearchComponent } from './auto-search/auto-search.component';
     FormsModule,
     MatNativeDateModule,
     AppRoutingModule,
-    HttpClientInMemoryWebApiModule.forRoot(
-      InMemoryDataService, { dataEncapsulation: false }
-    ),
     MaterialModule,
   ],
   entryComponents: [AppComponent],

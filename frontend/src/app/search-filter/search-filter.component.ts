@@ -4,11 +4,6 @@ import { Observable, Subject } from 'rxjs';
 import { FormControl } from '@angular/forms';
 import { map, startWith } from 'rxjs/operators';
 
-import {
-   debounceTime, distinctUntilChanged, switchMap
- } from 'rxjs/operators';
-
-import { Location } from '../location';
 import { SearchService } from '../search.service';
 
 @Component({
@@ -21,7 +16,7 @@ export class SearchFilterComponent implements OnInit {
   locations$: Observable<Location[]>;
   private searchTerms = new Subject<string>();
 
-  constructor(private searchService: SearchService) {}
+  constructor(private searchService: SearchService) { }
 
   // Push a search term into the observable stream.
   search(term: string): void {
@@ -32,25 +27,16 @@ export class SearchFilterComponent implements OnInit {
   options: string[] = ['One', 'Two', 'Three'];
   filteredOptions: Observable<string[]>;
 
-    ngOnInit(): void {
+  ngOnInit(): void {
+
     this.filteredOptions = this.myControl.valueChanges
-    .pipe(
-      startWith(''),
-      map(value => this._filter(value))
-    );
+      .pipe(
+        startWith(''),
+        map(value => this._filter(value))
+      );
 
-   this.locations$ = this.searchTerms.pipe(
-      // wait 300ms after each keystroke before considering the term
-      debounceTime(300),
-
-      // ignore new term if same as previous term
-      distinctUntilChanged(),
-
-      // switch to new search observable each time the term changes
-      switchMap((term: string) => this.searchService.searchLocations(term)),
-    );
   }
-  
+
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
 

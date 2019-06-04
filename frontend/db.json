@@ -1,0 +1,16 @@
+{
+    "areas": [
+        {
+            "id": 1,
+            "area": "Birmingham Gardens"
+        },
+        {
+            "id": 2,
+            "area": "Wallsend"
+        },
+        {
+            "id": 3,
+            "area": "Newcastle"
+        }
+    ]
+}
