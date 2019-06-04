@@ -5,7 +5,7 @@ import { map, startWith } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { SearchService } from '../search.service'
 
-import { Area} from '../models/area';
+import { Area } from '../models/area';
 
 @Component({
   selector: 'app-auto-search',
@@ -15,23 +15,23 @@ import { Area} from '../models/area';
 
 
 export class AutoSearchComponent implements OnInit {
-  constructor(public router: Router, private search: SearchService){}
+  constructor(private router: Router, private searchService: SearchService){}
   
-  myControl = new FormControl();
+  areaSearch = new FormControl();
+
   options: string[] = [];
-  filteredOptions: Observable<string[]>;
+  filteredAreas: Observable<string[]>;
   areas: Area[] = [];
 
   ngOnInit() {
     
-    this.search.getAllAreas().subscribe((areas: Area[]) => {
+    this.searchService.getAllAreas().subscribe((areas: Area[]) => {
       this.areas = areas;
       var option = this.areas.map(obj => obj.area);
       this.options = option;
-     console.log(this.options);
     });
-    
-    this.filteredOptions = this.myControl.valueChanges
+ 
+    this.filteredAreas = this.areaSearch.valueChanges
       .pipe(
         startWith(''),
         map(value => this._filter(value))
@@ -40,11 +40,10 @@ export class AutoSearchComponent implements OnInit {
 
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
-
     return this.options.filter(option => option.toLowerCase().includes(filterValue));
   }
 
   redirect() {
-    this.router.navigate(['filter']);
+    this.router.navigate(['filter', {area: this.areaSearch.value}]);
   }
 }

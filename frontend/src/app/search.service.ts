@@ -1,7 +1,10 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 
 import { Area } from './models/area';
+import { Cluster } from './models/cluster'
+import { Path } from './models/path'
+import { Points } from './models/points'
 import { environment } from 'src/environments/environment';
 
 const httpOptions = {
@@ -17,5 +20,23 @@ export class SearchService {
 
   getAllAreas(){
     return this.http.get<Area[]>(`${this.apiUrl}/areas`)
+  }
+
+  getAreaClusters(areaName: string){
+    return this.http.get<Cluster[]>(`${this.apiUrl}/clusters`, {
+      params: { area: areaName }
+    })
+  }
+
+  getClusterPaths(clusterID){
+    return this.http.get<Path[]>(`${this.apiUrl}/paths`, {
+      params: { cluster: clusterID }
+    })
+  }
+
+  getPathPoints(pathID) {
+    return this.http.get<Points[]>(`${this.apiUrl}/points`, {
+      params: { path: pathID }
+    })
   }
 }

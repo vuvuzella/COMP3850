@@ -2,10 +2,10 @@
   <div class="d-flex justify-content-center">
     <form class="search-form">
       <mat-form-field class="search-full-width" appearance="fill">
-        <input type="text" placeholder="Search for running tracks in your area" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
-        <mat-autocomplete #auto="matAutocomplete">
-          <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-            {{option}}
+        <input type="text" placeholder="Search for running tracks in your area" matInput [formControl]="areaSearch" [matAutocomplete]="area" (keydown.enter)="redirect()">
+        <mat-autocomplete #area="matAutocomplete">
+          <mat-option *ngFor="let area of filteredAreas | async" [value]="area">
+            {{area}}
           </mat-option>
         </mat-autocomplete>
         <i matSuffix class="fas fa-search"></i>
@@ -15,20 +15,20 @@
   <div class="d-flex justify-content-center">
     <form class="search-filter-left">
       <mat-form-field class="search-full-width" appearance="fill">
-        <input type="text" placeholder="Cluster" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
-        <mat-autocomplete #auto="matAutocomplete">
-          <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-            {{option}}
+        <input type="text" placeholder="Cluster" matInput [formControl]="clusterSearch" [matAutocomplete]="cluster" (keydown.enter)="findPaths()">
+        <mat-autocomplete #cluster="matAutocomplete">
+          <mat-option *ngFor="let cluster of clusterOptions | async" [value]="cluster">
+            {{cluster}}
           </mat-option>
         </mat-autocomplete>
       </mat-form-field>
     </form>
     <form class="search-filter-right">
       <mat-form-field class="search-full-width" appearance="fill">
-        <input type="text" placeholder="Path" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
-        <mat-autocomplete #auto="matAutocomplete">
-          <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-            {{option}}
+        <input type="text" placeholder="Path" matInput [formControl]="pathSearch" [matAutocomplete]="path" (keydown.enter)="findPoints()">
+        <mat-autocomplete #path="matAutocomplete">
+          <mat-option *ngFor="let path of pathOptions | async" [value]="path">
+            {{path}}
           </mat-option>
         </mat-autocomplete>
       </mat-form-field>

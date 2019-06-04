@@ -2,10 +2,10 @@
   <div class="d-flex justify-content-center">
     <form class="search-form" >
       <mat-form-field class="search-full-width" appearance="fill">
-        <input type="text" placeholder="Search for running tracks in your area" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto" (keydown.enter)="redirect()">
+        <input type="text" placeholder="Search for running tracks in your area" matInput [formControl]="areaSearch" [matAutocomplete]="auto" (keydown.enter)="redirect()">
         <mat-autocomplete #auto="matAutocomplete">
-          <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-            {{option}}
+          <mat-option *ngFor="let area of filteredAreas | async" [value]="area">
+            {{area}}
           </mat-option>
         </mat-autocomplete>
         <i matSuffix class="fas fa-search"></i>

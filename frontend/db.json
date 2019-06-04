@@ -12,5 +12,38 @@
             "id": 3,
             "area": "Newcastle"
         }
+    ],
+
+    "clusters": [
+        {
+            "id": 1,
+            "area": "Birmingham Gardens",
+            "cluster": "1"
+        },
+        {
+            "id": 2,
+            "area": "Newcastle",
+            "cluster": "2"
+        }
+    ],
+
+    "paths": [
+        {
+            "id": 1,
+            "cluster": 1,
+            "path": "1"
+        },
+        {
+            "id": 2,
+            "cluster": 2,
+            "path": "2"
+        }
+    ],
+    "points": [
+        {
+            "id": 1,
+            "path": 1,
+            "points": [ -32.921178, 151.702009, -32.921854, 151.704121, -32.922219, 151.707184 ]
+        }
     ]
 }

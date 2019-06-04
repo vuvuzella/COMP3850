@@ -1,23 +1,29 @@
+var pathCoordinates = [ { lat:-22.921178, lng: 151.702009 } ];
+
+function setPath(points) {
+  console.log(points);
+  pathCoordinates = points;
+  initMap();
+}
+
 function initMap() {
   var map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 3,
-    center: { lat: 0, lng: -180 },
+    zoom: 8,
+    center: { lat: -32.921178, lng: 151.702009 },
     mapTypeId: 'terrain'
   });
 
-  var flightPlanCoordinates = [
-    { lat: 37.772, lng: -122.214 },
-    { lat: 21.291, lng: -157.821 },
-    { lat: -18.142, lng: 178.431 },
-    { lat: -27.467, lng: 153.027 }
-  ];
-  var flightPath = new google.maps.Polyline({
-    path: flightPlanCoordinates,
+  var path = new google.maps.Polyline({
+    path: pathCoordinates,
     geodesic: true,
     strokeColor: '#FF0000',
     strokeOpacity: 1.0,
     strokeWeight: 2
   });
 
-  flightPath.setMap(map);
+  path.setMap(map);
+  var location = pathCoordinates[0];
+  map.setCenter(location);
 }
+
+
