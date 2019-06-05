@@ -41,12 +41,12 @@ export class SearchFilterComponent implements OnInit {
   ngOnInit(): void {
 
     this.searchService.getAllAreas().subscribe((areas: Area[]) => {
-      this.areas = areas;
-      var option = this.areas.map(obj => obj.area);
+      this.areas = areas['results'];
+      var option = this.areas.map(obj => obj['area_name']);
       this.options = option;
     });
 
-    this.param = this.route.snapshot.paramMap.get('area');
+    this.param = this.route.snapshot.paramMap.get('area')['area_name'];
 
     this.areaSearch.setValue(this.param);
 

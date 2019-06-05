@@ -10,7 +10,8 @@ import { Area } from '../models/area';
 @Component({
   selector: 'app-auto-search',
   templateUrl: './auto-search.component.html',
-  styleUrls: ['./auto-search.component.css']
+  styleUrls: ['./auto-search.component.css'],
+  providers: [ SearchService ]
 })
 
 
@@ -26,8 +27,8 @@ export class AutoSearchComponent implements OnInit {
   ngOnInit() {
     
     this.searchService.getAllAreas().subscribe((areas: Area[]) => {
-      this.areas = areas;
-      var option = this.areas.map(obj => obj.area);
+      this.areas = areas['results'];
+      var option = this.areas.map(obj => obj['area_name']);
       this.options = option;
     });
  
@@ -44,6 +45,15 @@ export class AutoSearchComponent implements OnInit {
   }
 
   redirect() {
-    this.router.navigate(['filter', {area: this.areaSearch.value}]);
+    console.log(this.areas);
+    let chosen_area = null;
+    for (let area of this.areas) {
+      console.log(area);
+      if (area['area_name'].toLowerCase() == this.areaSearch.value.toLowerCase()) {
+        chosen_area = area['id'];
+	break;
+      }
+    }
+    this.router.navigate(['filter', {area: chosen_area}]);
   }
 }

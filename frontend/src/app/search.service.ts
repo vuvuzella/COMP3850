@@ -19,7 +19,7 @@ export class SearchService {
     private http: HttpClient ) { }
 
   getAllAreas(){
-    return this.http.get<Area[]>(`${this.apiUrl}/areas`)
+    return this.http.get<Area[]>(`${this.apiUrl}/runareas`)
   }
 
   getAreaClusters(areaName: string){
@@ -29,7 +29,7 @@ export class SearchService {
   }
 
   getClusterPaths(clusterID){
-    return this.http.get<Path[]>(`${this.apiUrl}/paths`, {
+    return this.http.get<Path[]>(`${this.apiUrl}/runpaths`, {
       params: { cluster: clusterID }
     })
   }
