@@ -26,8 +26,8 @@ export class AutoSearchComponent implements OnInit {
   ngOnInit() {
     
     this.searchService.getAllAreas().subscribe((areas: Area[]) => {
-      this.areas = areas;
-      var option = this.areas.map(obj => obj.area);
+      this.areas = areas['results'];
+      var option = this.areas.map(obj => obj['area_name']);
       this.options = option;
     });
  
