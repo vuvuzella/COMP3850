@@ -5,8 +5,11 @@
 export const environment = {
   production: false,
   
-  areas: "http://localhost:3000",
-  areaApi: "http://127.0.0.1:8000"
+	// areas: "http://localhost:3000",
+  	// areaApi: "http://127.0.0.1:8000"
+	areas: 'http://10.222.253.175:3000',
+	areaApi: 'http://10.222.253.175:3000'
+
 };
 
 /*
